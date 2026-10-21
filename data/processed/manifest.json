@@ -1,0 +1,56 @@
+{
+  "created_utc": "2026-10-21T17:04:45+00:00",
+  "source": "Open Charge Map via github.com/openchargemap/ocm-export (California subset)",
+  "versions": {
+    "v1_raw": {
+      "file": "data/raw/california_ev_chargers.csv",
+      "rows": 21952,
+      "sha256": "d9907ae91b69976e60c1f8f753324fe20579128354870c9b427bc08abd298e87"
+    },
+    "v2_clean": {
+      "file": "data/processed/ev_ca_v2_clean.parquet",
+      "rows": 21830,
+      "sha256": "1891cf87f92745a8618642c3276106db152200a1b3c006b395c42f1008510c91"
+    },
+    "model_ready": {
+      "file": "data/processed/ev_ca_model_ready.parquet",
+      "rows": 21453,
+      "sha256": "aaa19025d0158ac8fc95e2262de69eb67946b1e758b95cea04c678dac618be2a"
+    }
+  },
+  "cleaning_ledger": [
+    {
+      "rule": "R1 coordinates inside California",
+      "rows_before": 21952,
+      "rows_after": 21937,
+      "removed": 15,
+      "why": "State label says CA but the coordinates are elsewhere"
+    },
+    {
+      "rule": "R2 drop exact duplicate rows",
+      "rows_before": 21937,
+      "rows_after": 21830,
+      "removed": 107,
+      "why": "Identical records inflate counts and leak across splits"
+    },
+    {
+      "rule": "R3 require a power_kw value",
+      "rows_before": 21830,
+      "rows_after": 21457,
+      "removed": 373,
+      "why": "Cannot train or evaluate without the target"
+    },
+    {
+      "rule": "R4 drop level/kW contradictions",
+      "rows_before": 21457,
+      "rows_after": 21453,
+      "removed": 4,
+      "why": "Suspect labels: level bucket disagrees with the kW value"
+    }
+  ],
+  "excluded_features": {
+    "charge_level": "bucketed version of the target (leakage)",
+    "amps, voltage": "amps x volts reconstructs power (leakage); 26% missing",
+    "connector_status, number_of_points": ">85% missing"
+  }
+}

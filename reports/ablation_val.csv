@@ -1,0 +1,9 @@
+feature set,MAE_kW,R2_kW,MAE_log
+all features,9.583,0.735,0.119
+"- location (lat, lon, city)",9.17,0.753,0.111
+- operator,12.229,0.622,0.144
+- usage_type,9.937,0.728,0.127
+- current_type,9.661,0.736,0.122
+- connection_type,10.439,0.703,0.144
+connection_type only,16.531,0.426,0.21
+"location only (lat, lon, city)",27.322,-0.065,1.011

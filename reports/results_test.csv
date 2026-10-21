@@ -1,0 +1,9 @@
+,MAE_kW,MedAE_kW,RMSE_kW,R2_kW,MAE_log
+Global median,27.238,0.0,75.77,-0.146,0.85
+Connector-type median,15.817,0.0,59.168,0.301,0.187
+Ridge (one-hot),12.692,0.335,40.599,0.671,0.191
+Gradient boosting,9.613,0.123,34.454,0.763,0.119
+TensorFlow (seed 0),9.579,0.127,35.141,0.753,0.121
+TensorFlow (seed 1),9.838,0.149,35.907,0.743,0.129
+TensorFlow (seed 2),9.921,0.162,36.5,0.734,0.129
+TensorFlow (3-seed ensemble),9.664,0.128,35.659,0.746,0.123

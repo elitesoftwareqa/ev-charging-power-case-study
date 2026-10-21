@@ -1,0 +1,11 @@
+{
+  "python": "3.13.16",
+  "tensorflow": "2.21.0",
+  "scikit-learn": "1.9.1",
+  "pandas": "3.0.5",
+  "numpy": "2.5.3",
+  "matplotlib": "3.11.2",
+  "seed": 42,
+  "wandb_enabled": false,
+  "run_utc": "2026-10-21T17:05:54+00:00"
+}
